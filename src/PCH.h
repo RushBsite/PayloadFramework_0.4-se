@@ -106,7 +106,7 @@
 #include <ShlObj_core.h>
 
 using namespace std::literals;
-using namespace REL::literals;
+//using namespace REL::literals;
 
 #define DLLEXPORT extern "C" [[maybe_unused]] __declspec(dllexport)
 

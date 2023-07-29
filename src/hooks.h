@@ -34,7 +34,8 @@ class Hook_PlayerUpdate
 {
 public:
 	static void install() {
-		REL::Relocation<std::uintptr_t> PlayerCharacterVtbl{ RE::Offset::PlayerCharacter::Vtbl };
+		//REL::Relocation<std::uintptr_t> PlayerCharacterVtbl{ RE::Offset::PlayerCharacter::Vtbl };
+		REL::Relocation<std::uintptr_t> PlayerCharacterVtbl{ RE::VTABLE_PlayerCharacter[2] };
 		_Update = PlayerCharacterVtbl.write_vfunc(0xAD, Update);
 		INFO("Player update hook installed");
 	}
@@ -52,7 +53,7 @@ class Hooks {
 public:
 
 	static void install() {
-		SKSE::AllocTrampoline(1 << 5);
+		SKSE::AllocTrampoline(1 << 4);
 		//Hook_MainUpdate::install();
 		Hook_PlayerUpdate::install();
 	}
